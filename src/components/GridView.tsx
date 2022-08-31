@@ -21,20 +21,24 @@ const GridView = ({ teamOne, teamTwo, teamOnePlayers, teamTwoPlayers, navigation
     <React.Fragment>
 
       {
-        (searchText !== '' && filteredResults.length > 0) ? (
+        (searchText !== '' && searchText.length > 3 && filteredResults.length > 0) ? (
           <View>
             <View>
               <View style={styles.backgroundStyle}>
-                <TeamTitleGrid
-                  logoUri={(filteredResultsTeam && filteredResultsTeam.logo) ? filteredResultsTeam.logo : 'https://illustoon.com/photo/4589.png'}
-                  teamName={(filteredResultsTeam && filteredResultsTeam.name) ? filteredResultsTeam.name : ' Team'}
-                  singleDetails
-                />
+                {
+                  filteredResultsTeam && (
+                    <TeamTitleGrid
+                      logoUri={(filteredResultsTeam && filteredResultsTeam.logo) && filteredResultsTeam.logo }
+                      teamName={(filteredResultsTeam && filteredResultsTeam.name) && filteredResultsTeam.name }
+                      singleDetails
+                    />
+                  )
+                }
               </View>
               <View style={{ marginBottom: 60 }} />
               <ScrollView>
                 <View style={styles.listContainer}>
-                  <View style={{width: '100%'}}>
+                  <View style={{ width: '100%' }}>
                     {
                       filteredResults.map((player: any) => (
                         <TouchableOpacity
@@ -53,14 +57,22 @@ const GridView = ({ teamOne, teamTwo, teamOnePlayers, teamTwoPlayers, navigation
         ) : (
           <View>
             <View style={styles.backgroundStyle}>
-              <TeamTitleGrid
-                logoUri={(teamOne && teamOne.logo) ? teamOne.logo : 'https://illustoon.com/photo/4589.png'}
-                teamName={(teamOne && teamOne.name) ? teamOne.name : ' Team one'}
-              />
-              <TeamTitleGrid
-                logoUri={(teamTwo && teamTwo.logo) ? teamTwo.logo : 'https://illustoon.com/photo/4589.png'}
-                teamName={(teamTwo && teamTwo.name) ? teamTwo.name : ' Team Two'}
-              />
+              {
+                teamOne && (
+                  <TeamTitleGrid
+                    logoUri={(teamOne && teamOne.logo) && teamOne.logo }
+                    teamName={(teamOne && teamOne.name) && teamOne.name }
+                  />
+                )
+              }
+              {
+                teamTwo && (
+                  <TeamTitleGrid
+                    logoUri={(teamTwo && teamTwo.logo) && teamTwo.logo }
+                    teamName={(teamTwo && teamTwo.name) && teamTwo.name }
+                  />
+                )
+              }
             </View>
             <View style={{ marginBottom: 35 }} />
             <ScrollView>
