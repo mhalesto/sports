@@ -27,7 +27,7 @@ export default () => {
     try {
       const response = await sports.get('/players/squads', {
         params: {
-          team: '1'
+          team: '2691'
         }
       });
       setTeamOneDetails(response.data.response[0].team);
@@ -41,7 +41,7 @@ export default () => {
     try {
       const response = await sports.get('/players/squads', {
         params: {
-          team: '2'
+          team: '529'
         }
       });
       setTeamTwoDetails(response.data.response[0].team);
@@ -52,7 +52,7 @@ export default () => {
   }
 
   useEffect(() => {
-    SearchApi('');
+    // SearchApi('');
     TeamOneDataApi();
     TeamTwoDataApi();
   }, []);
