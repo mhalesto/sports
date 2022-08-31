@@ -21,7 +21,7 @@ const GridView = ({ teamOne, teamTwo, teamOnePlayers, teamTwoPlayers, navigation
     <React.Fragment>
 
       {
-        (searchText !== '' && searchText.length > 3 && filteredResults.length > 0) ? (
+        (searchText !== '' && searchText.length > 3 && filteredResults.length > 0 ) ? (
           <View>
             <View>
               <View style={styles.backgroundStyle}>
