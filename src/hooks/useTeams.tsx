@@ -1,23 +1,20 @@
 import { useEffect, useState } from 'react';
 import sports from '../api/sports';
 
-interface IUseTeams {
-  id: any;
-}
-
 export default () => {
   const [errorMsg, setErrorMsg] = useState('');
   const [teams, setTeams] = useState([]);
-  const [teamOneDetails, setTeamOne] = useState<IUseTeams>({id: null});
-  const [teamTwoDetails, setTeamTwo] = useState<IUseTeams>({id: null})
+  const [teamOneDetails, setTeamOneDetails] = useState({});
+  const [teamTwoDetails, setTeamTwoDetails] = useState({})
   const [teamOnePlayers, setTeamOnePlayers] = useState([]);
   const [teamTwoPlayers, setTeamTwoPlayers] = useState([]);
 
-  const SearchApi = async (term: string): Promise<any> => {
+  const SearchApi: any = async (term: string): Promise<any> => {
     try {
       const response = await sports.get('/drivers', {
         params: {
-          search: term
+          search: term,
+          // season: 2023
         }
       });
       setTeams(response.data.response);
@@ -26,32 +23,6 @@ export default () => {
     }
   }
 
-  // const TeamOneApi = async () => {
-  //   try {
-  //     const response = await sports.get('/teams', {
-  //       params: {
-  //         id:1
-  //       }
-  //     });
-  //     setTeamOne(response.data.response[0].team);
-  //   } catch (err: any) {
-  //     setErrorMsg('Something went wrong');
-  //   }
-  // }
-
-  // const TeamTwoApi = async () => {
-  //   try {
-  //     const response = await sports.get('/teams', {
-  //       params: {
-  //         id:2
-  //       }
-  //     });
-  //     setTeamTwo(response.data.response[0].team);
-  //   } catch (err: any) {
-  //     setErrorMsg('Something went wrong');
-  //   }
-  // }
-
   const TeamOneDataApi = async () => {
     try {
       const response = await sports.get('/players/squads', {
@@ -59,7 +30,7 @@ export default () => {
           team: '1'
         }
       });
-      setTeamOne(response.data.response[0].team);
+      setTeamOneDetails(response.data.response[0].team);
       setTeamOnePlayers(response.data.response[0].players);
     } catch (err: any) {
       setErrorMsg('Something went wrong');
@@ -73,7 +44,7 @@ export default () => {
           team: '2'
         }
       });
-      setTeamTwo(response.data.response[0].team);
+      setTeamTwoDetails(response.data.response[0].team);
       setTeamTwoPlayers(response.data.response[0].players);
     } catch (err: any) {
       setErrorMsg('Something went wrong');
@@ -81,8 +52,7 @@ export default () => {
   }
 
   useEffect(() => {
-    // SearchApi();
-
+    SearchApi('');
     TeamOneDataApi();
     TeamTwoDataApi();
   }, []);
