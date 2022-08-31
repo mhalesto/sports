@@ -28,20 +28,20 @@ const GridView = ({ teamOne, teamTwo, teamOnePlayers, teamTwoPlayers, navigation
                 <TeamTitleGrid
                   logoUri={(filteredResultsTeam && filteredResultsTeam.logo) ? filteredResultsTeam.logo : 'https://illustoon.com/photo/4589.png'}
                   teamName={(filteredResultsTeam && filteredResultsTeam.name) ? filteredResultsTeam.name : ' Team'}
+                  singleDetails
                 />
               </View>
-              <View style={{ marginBottom: 35 }} />
+              <View style={{ marginBottom: 60 }} />
               <ScrollView>
                 <View style={styles.listContainer}>
-                  <View style={styles.col}>
+                  <View style={{width: '100%'}}>
                     {
                       filteredResults.map((player: any) => (
                         <TouchableOpacity
                           onPress={() => navigation.navigate('PlayerDetails', { player })}
-                          style={styles.playerContainerStyle}
+                          style={styles.filteredContainerStyle}
                           key={player.id}>
                           <Text style={styles.playerNameStyle}>{player.name}</Text>
-
                         </TouchableOpacity>
                       ))
                     }
@@ -97,8 +97,6 @@ const GridView = ({ teamOne, teamTwo, teamOnePlayers, teamTwoPlayers, navigation
         )
       }
 
-
-
     </React.Fragment>
   );
 }
@@ -120,6 +118,7 @@ const styles = StyleSheet.create({
     width: '100%',
     flex: 1,
     flexDirection: 'row',
+    marginBottom: 170
   },
   col: {
     width: '50%',
@@ -135,6 +134,12 @@ const styles = StyleSheet.create({
   playerNameStyle: {
     fontSize: 16,
     marginHorizontal: 10,
+  },
+  filteredContainerStyle: {
+    height: 45,
+    borderBottomColor: 'grey',
+    borderBottomWidth: 0.5,
+    paddingTop: 11,
   }
 });
 

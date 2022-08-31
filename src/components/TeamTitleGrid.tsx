@@ -5,10 +5,11 @@ import { useFonts, Raleway_100Thin, Raleway_400Regular, Raleway_600SemiBold } fr
 
 interface ITeamTitleGridProps {
   logoUri: string,
-  teamName: string
+  teamName: string,
+  singleDetails?: boolean
 }
 
-const TeamTitleGrid = ({logoUri, teamName}: ITeamTitleGridProps) => {
+const TeamTitleGrid = ({logoUri, teamName, singleDetails}: ITeamTitleGridProps) => {
   let [fontsLoaded, error] = useFonts({
     Raleway_100Thin, Raleway_400Regular, Raleway_600SemiBold
   });
@@ -18,7 +19,7 @@ const TeamTitleGrid = ({logoUri, teamName}: ITeamTitleGridProps) => {
   }
 
   return (
-    <View style={styles.teamBackgroundStyle}>
+    <View style={singleDetails ? styles.singleBackGroundColor : styles.teamBackgroundStyle}>
       <Image
         style={styles.teamLogoStyle}
         source={{
@@ -49,6 +50,14 @@ const styles = StyleSheet.create({
     height: 50,
     width: 50,
     alignSelf: 'center'
+  },
+  singleBackGroundColor: {
+    backgroundColor: '#fff',
+    height: 50,
+    // flexDirection: 'row',
+    marginHorizontal: 15,
+    marginTop: 35,
+    flex: 1,
   }
 })
 
