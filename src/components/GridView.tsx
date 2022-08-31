@@ -84,7 +84,9 @@ const GridView = ({ teamOne, teamTwo, teamOnePlayers, teamTwoPlayers, navigation
                         onPress={() => navigation.navigate('PlayerDetails', { player })}
                         style={styles.playerContainerStyle}
                         key={player.id}>
-                        <Text style={styles.playerNameStyle}>{player.name}</Text>
+                        <Text style={styles.playerNameStyle}>
+                          {(player.name.length > 18) ? `${player.name.slice(0, 18)}...` : player.name }
+                        </Text>
 
                       </TouchableOpacity>
                     ))
@@ -98,7 +100,9 @@ const GridView = ({ teamOne, teamTwo, teamOnePlayers, teamTwoPlayers, navigation
                         onPress={() => navigation.navigate('PlayerDetails', { player })}
                         style={styles.playerContainerStyle}
                         key={player.id}>
-                        <Text style={styles.playerNameStyle}>{player.name}</Text>
+                        <Text style={styles.playerNameStyle}>
+                          {(player.name.length > 18) ? `${player.name.slice(0, 18)}...` : player.name }
+                        </Text>
                       </TouchableOpacity>
                     ))
                   }
@@ -136,12 +140,12 @@ const styles = StyleSheet.create({
     width: '50%',
   },
   playerContainerStyle: {
-    height: 45,
+    height: 50,
     borderBottomColor: 'grey',
     borderBottomWidth: 0.5,
     borderRightColor: 'grey',
     borderRightWidth: 0.5,
-    paddingTop: 11,
+    paddingVertical: 14,
   },
   playerNameStyle: {
     fontSize: 16,

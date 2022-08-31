@@ -36,28 +36,28 @@ const PlayerDetails = ({ navigation }: IPlayerDetailsProps) => {
             <View style={styles.rowContainerStyle}>
               <View style={styles.playerDetailsRow}>
                 <View style={styles.colStyle}>
-                  <Text style={styles.colTextStyle}>Age:</Text>
+                  <Text style={styles.colTextStyle}>Age</Text>
                 </View>
                 <View style={styles.colStyle}>
-                  {<Text style={styles.colTextStyle}>{player.age}</Text>}
-                </View>
-              </View>
-
-              <View style={styles.playerDetailsRow}>
-                <View style={styles.colStyle}>
-                  <Text style={styles.colTextStyle}>number:</Text>
-                </View>
-                <View style={styles.colStyle}>
-                  {<Text style={styles.colTextStyle}>{player && player.number ? player.number : 'N/A'}</Text>}
+                  {<Text style={styles.colTextStyle}>:&nbsp;{player.age}</Text>}
                 </View>
               </View>
 
               <View style={styles.playerDetailsRow}>
                 <View style={styles.colStyle}>
-                  <Text style={styles.colTextStyle}>position:</Text>
+                  <Text style={styles.colTextStyle}>number</Text>
                 </View>
                 <View style={styles.colStyle}>
-                  {<Text style={styles.colTextStyle}>{player.position}</Text>}
+                  {<Text style={styles.colTextStyle}>:&nbsp;{player && player.number ? player.number : 'N/A'}</Text>}
+                </View>
+              </View>
+
+              <View style={styles.playerDetailsRow}>
+                <View style={styles.colStyle}>
+                  <Text style={styles.colTextStyle}>position</Text>
+                </View>
+                <View style={styles.colStyle}>
+                  {<Text style={styles.colTextStyle}>:&nbsp;{player.position}</Text>}
                 </View>
               </View>
             </View>
@@ -105,9 +105,10 @@ const styles = StyleSheet.create({
     borderBottomWidth: 0.5
   },
   colTextStyle: {
-    fontSize: 26,
+    fontSize: 24,
     fontFamily: 'Raleway_400Regular',
-    marginHorizontal: 10
+    marginHorizontal: 10,
+    paddingVertical: 8
   }
 });
 
