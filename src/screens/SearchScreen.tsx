@@ -17,7 +17,15 @@ const SearchScreen = () => {
       />
       {errorMsg && (<Text>{`${errorMsg}`}</Text>)}
 
-      <GridView searchText={searchText} filteredResults={filteredResults} filteredResultsTeam={filteredResultsTeam} teamOne={teamOneDetails} teamTwo={teamTwoDetails} teamOnePlayers={teamOnePlayers} teamTwoPlayers={teamTwoPlayers} />
+      <GridView
+        searchText={searchText}
+        filteredResults={filteredResults}
+        filteredResultsTeam={filteredResultsTeam}
+        teamOne={teamOneDetails}
+        teamTwo={teamTwoDetails}
+        teamOnePlayers={teamOnePlayers}
+        teamTwoPlayers={teamTwoPlayers}
+      />
     </View>
   );
 }
