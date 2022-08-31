@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {View, Image, Text, StyleSheet} from 'react-native';
+import { View, Image, Text, StyleSheet } from 'react-native';
 import AppLoading from 'expo-app-loading';
 import { useFonts, Raleway_100Thin, Raleway_400Regular, Raleway_600SemiBold } from '@expo-google-fonts/raleway';
 
@@ -9,7 +9,7 @@ interface ITeamTitleGridProps {
   singleDetails?: boolean
 }
 
-const TeamTitleGrid = ({logoUri, teamName, singleDetails}: ITeamTitleGridProps) => {
+const TeamTitleGrid = ({ logoUri, teamName, singleDetails }: ITeamTitleGridProps) => {
   let [fontsLoaded, error] = useFonts({
     Raleway_100Thin, Raleway_400Regular, Raleway_600SemiBold
   });

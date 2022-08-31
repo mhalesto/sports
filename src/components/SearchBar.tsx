@@ -3,13 +3,13 @@ import { View, TextInput, StyleSheet } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 
 interface ISearchBarProps {
-  searchValue: string 
-  onSearchChange(searchText: string): void, 
+  searchValue: string
+  onSearchChange(searchText: string): void,
   onSearchSubmit(): void
 }
 
-const SearchBar = ({searchValue, onSearchChange, onSearchSubmit}: ISearchBarProps) => {
-  return(
+const SearchBar = ({ searchValue, onSearchChange, onSearchSubmit }: ISearchBarProps) => {
+  return (
     <View style={styles.backgroundStyle}>
       <Feather name="search" style={styles.iconStyle} />
       <TextInput

@@ -28,8 +28,8 @@ const GridView = ({ teamOne, teamTwo, teamOnePlayers, teamTwoPlayers, navigation
                 {
                   filteredResultsTeam && (
                     <TeamTitleGrid
-                      logoUri={(filteredResultsTeam && filteredResultsTeam.logo) && filteredResultsTeam.logo }
-                      teamName={(filteredResultsTeam && filteredResultsTeam.name) && filteredResultsTeam.name }
+                      logoUri={(filteredResultsTeam && filteredResultsTeam.logo) && filteredResultsTeam.logo}
+                      teamName={(filteredResultsTeam && filteredResultsTeam.name) && filteredResultsTeam.name}
                       singleDetails
                     />
                   )
@@ -60,16 +60,16 @@ const GridView = ({ teamOne, teamTwo, teamOnePlayers, teamTwoPlayers, navigation
               {
                 teamOne && (
                   <TeamTitleGrid
-                    logoUri={(teamOne && teamOne.logo) && teamOne.logo }
-                    teamName={(teamOne && teamOne.name) && teamOne.name }
+                    logoUri={(teamOne && teamOne.logo) && teamOne.logo}
+                    teamName={(teamOne && teamOne.name) && teamOne.name}
                   />
                 )
               }
               {
                 teamTwo && (
                   <TeamTitleGrid
-                    logoUri={(teamTwo && teamTwo.logo) && teamTwo.logo }
-                    teamName={(teamTwo && teamTwo.name) && teamTwo.name }
+                    logoUri={(teamTwo && teamTwo.logo) && teamTwo.logo}
+                    teamName={(teamTwo && teamTwo.name) && teamTwo.name}
                   />
                 )
               }

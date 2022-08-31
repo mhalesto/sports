@@ -3,25 +3,10 @@ import sports from '../api/sports';
 
 export default () => {
   const [errorMsg, setErrorMsg] = useState('');
-  const [teams, setTeams] = useState([]);
-  const [teamOneDetails, setTeamOneDetails] = useState({});
-  const [teamTwoDetails, setTeamTwoDetails] = useState({})
+  const [teamOneDetails, setTeamOneDetails] = useState([]);
+  const [teamTwoDetails, setTeamTwoDetails] = useState([])
   const [teamOnePlayers, setTeamOnePlayers] = useState([]);
   const [teamTwoPlayers, setTeamTwoPlayers] = useState([]);
-
-  const SearchApi: any = async (term: string): Promise<any> => {
-    try {
-      const response = await sports.get('/drivers', {
-        params: {
-          search: term,
-          // season: 2023
-        }
-      });
-      setTeams(response.data.response);
-    } catch (err: any) {
-      setErrorMsg('Something went wrong');
-    }
-  }
 
   const TeamOneDataApi = async () => {
     try {
@@ -51,11 +36,34 @@ export default () => {
     }
   }
 
+  const [filteredResults, setfilteredResults] = useState([]);
+  const [filteredResultsTeam, setfilteredResultsTeam] = useState([]);
+
+  const searchPlayer: any = (searchText: string) => {
+    if (searchText !== '') {
+      const combinedTeamPlayers = teamOnePlayers.concat(teamTwoPlayers);
+      const filteredData = combinedTeamPlayers.filter((order: any) => {
+        const searchTextValue: any = searchText.toLowerCase();
+        return Object.values(order).join('').toLowerCase().includes(searchTextValue)
+      });
+
+      setfilteredResults(filteredData);
+
+      if (filteredData.length > 0) {
+        if (teamOnePlayers.includes(filteredData[0])) {
+          setfilteredResultsTeam(teamOneDetails)
+        } else {
+          setfilteredResultsTeam(teamTwoDetails);
+        }
+      }
+    }
+  }
+
   useEffect(() => {
-    // SearchApi('');
+    searchPlayer('');
     TeamOneDataApi();
     TeamTwoDataApi();
   }, []);
 
-  return [errorMsg, teams, teamOneDetails, teamTwoDetails, teamOnePlayers, teamTwoPlayers, SearchApi];
+  return [errorMsg, teamOneDetails, teamTwoDetails, teamOnePlayers, teamTwoPlayers, filteredResults, filteredResultsTeam, searchPlayer];
 };
