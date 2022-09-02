@@ -3,7 +3,7 @@ Sports app
 
 Inside the project dir run the following commands
 
-Run npm install
+npm install
 or
 Yarn install
 
